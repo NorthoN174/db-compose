@@ -15,6 +15,12 @@ services:
     depends_on:
       - postgres
 
+  puppeteer:
+    image: ghcr.io/puppeteer/puppeteer:latest
+    container_name: puppeteer_service
+    init: true
+    command: ["tail", "-f", "/dev/null"]
+
 volumes:
   pg-data:
     external: true
