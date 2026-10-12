@@ -20,6 +20,9 @@ services:
     container_name: puppeteer_service
     init: true
     command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./:/home/pptruser/app
+    working_dir: /home/pptruser/app
 
 volumes:
   pg-data:
