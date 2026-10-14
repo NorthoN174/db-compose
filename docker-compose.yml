@@ -23,6 +23,8 @@ services:
     volumes:
       - ./:/home/pptruser/app
     working_dir: /home/pptruser/app
+    environment:
+      DB_PASS: ${DB_PASS}
 
 volumes:
   pg-data:

@@ -15,7 +15,7 @@ import puppeteer from 'puppeteer';
   // Заполняем поля: Сервер, Пользователь, Пароль
   await page.type('input[name="auth[server]"]', 'postgres');
   await page.type('input[name="auth[username]"]', 'postgres');
-  await page.type('input[name="auth[password]"]', process.env.DB_PASS || 'hardcore_password');
+  await page.type('input[name="auth[password]"]', process.env.DB_PASS);
 
   // Жмем кнопку "Войти" и ждем, пока страница обновится
   await Promise.all([
