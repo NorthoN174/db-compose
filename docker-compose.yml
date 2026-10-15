@@ -15,14 +15,13 @@ services:
     depends_on:
       - postgres
 
-  puppeteer:
-    image: ghcr.io/puppeteer/puppeteer:latest
-    container_name: puppeteer_service
-    init: true
+  python_app:
+    image: python:3.12-slim
+    container_name: py_runner
     command: ["tail", "-f", "/dev/null"]
     volumes:
-      - ./:/home/pptruser/app
-    working_dir: /home/pptruser/app
+      - ./:/app
+    working_dir: /app
     environment:
       DB_PASS: ${DB_PASS}
 
