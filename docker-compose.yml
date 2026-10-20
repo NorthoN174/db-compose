@@ -16,7 +16,7 @@ services:
       - postgres
 
   python_app:
-    image: python:3.12-slim
+    build: .
     container_name: py_runner
     command: ["tail", "-f", "/dev/null"]
     volumes:
