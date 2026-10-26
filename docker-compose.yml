@@ -6,6 +6,11 @@ services:
       POSTGRES_PASSWORD: ${DB_PASS}
     volumes:
       - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
 
   adminer:
     image: adminer:latest
@@ -18,12 +23,14 @@ services:
   python_app:
     build: .
     container_name: py_runner
-    command: ["tail", "-f", "/dev/null"]
     volumes:
       - ./:/app
     working_dir: /app
     environment:
       DB_PASS: ${DB_PASS}
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   pg-data:
