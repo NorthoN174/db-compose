@@ -30,6 +30,7 @@ services:
       - "5000:5000"
     environment:
       DB_PASS: ${DB_PASS}
+      FLASK_DEBUG: 1
     depends_on:
       postgres:
         condition: service_healthy
