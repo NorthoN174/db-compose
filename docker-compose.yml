@@ -13,6 +13,7 @@ services:
       interval: 2s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   adminer:
     image: adminer:latest
@@ -23,6 +24,7 @@ services:
       - backend
     depends_on:
       - postgres
+    restart: unless-stopped
 
   python_app:
     build: .
@@ -39,6 +41,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    restart: unless-stopped
 
   nginx:
     image: nginx:alpine
@@ -51,6 +54,7 @@ services:
       - frontend
     depends_on:
       - python_app
+    restart: unless-stopped
 
 volumes:
   pg-data:
