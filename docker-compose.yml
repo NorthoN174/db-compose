@@ -34,7 +34,7 @@ services:
     working_dir: /app
     environment:
       DB_PASS: ${DB_PASS}
-      FLASK_DEBUG: 1
+#      FLASK_DEBUG: 1
     networks:
       - frontend
       - backend
