@@ -34,6 +34,9 @@ services:
     working_dir: /app
     environment:
       DB_PASS: ${DB_PASS}
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
 #      FLASK_DEBUG: 1
     networks:
       - frontend
